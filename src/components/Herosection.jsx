@@ -1,39 +1,31 @@
 import { ArrowDown } from "lucide-react";
+import { FlipWords } from "./FlipWords";
+import { Canvas } from "@react-three/fiber";
+import { Astronaut } from "./Astronaut";
+import { OrbitControls } from "@react-three/drei";
+import { useMediaQuery } from "react-responsive";
+import { HeroText } from "./HeroText";
 
 export const Herosection = () => {
+  const isMobile = useMediaQuery({ maxWidth: 853 });
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
+      className="container flex items-start justify-center min-h-screen overflow-hidden md:items-center md:justify-start c-space"
     >
-      <div className="container max-w-4xl mx-auto text-center z-10">
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in"> Hi, I'm </span>
-            <span className="text-primary opacity-0 animate-fade-in-delay-1">
-              {" "}
-              Chidi{" "}
-            </span>
-            <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
-              Princewill{" "}
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I create stellar and web experiences with modern technologies.
-            Specilizing in front-end and back-end development. A Dynamic and
-            detail-oriented professional with excellent interpersonal and
-            communication skills across all levels. Adept at building and
-            maintaining beautiful and functional interfaces with strong client
-            relationships while thriving under pressure.
-          </p>
+      <HeroText />
 
-          <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-            <a href="#projects" className="cosmic-button">
-              View My Work
-            </a>
-          </div>
-        </div>
-      </div>
+      <figure
+        className="absolute inset-0 border border-red-400"
+        style={{ width: "100vw", height: "100vh" }}
+      >
+        <Canvas camera={{ position: [0, 1, 3] }}>
+          <Astronaut
+            scale={isMobile ? 0.23 : 0.3}
+            position={isMobile ? [-0.2, -1.5, 0] : [1.3, -1, 0]}
+          />
+        </Canvas>
+      </figure>
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
         <span className="text-sm text-muted-foreground mb-2">Scroll</span>

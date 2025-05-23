@@ -1,4 +1,5 @@
 import { cn } from "@/tail/utils";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -63,7 +64,7 @@ export const Navbar = () => {
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        <div
+        <motion.div
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
@@ -84,7 +85,7 @@ export const Navbar = () => {
               </a>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </nav>
   );
