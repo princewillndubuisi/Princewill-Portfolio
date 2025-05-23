@@ -16,7 +16,7 @@ export const Herosection = () => {
       <HeroText />
 
       <figure
-        className="absolute inset-0 border border-red-400"
+        className="absolute inset-0"
         style={{ width: "100vw", height: "100vh" }}
       >
         <Canvas camera={{ position: [0, 1, 3] }}>
