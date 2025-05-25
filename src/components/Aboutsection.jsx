@@ -1,78 +1,158 @@
 import { Briefcase, Code, User } from "lucide-react";
+import { Card } from "./Card";
+import { useRef } from "react";
+import { Globe } from "./globe";
+import { CopyEmail } from "./CopyEmail";
+import { motion } from "motion/react";
+import { Framework } from "./Framework";
 
 export const Aboutsection = () => {
+  const grid2Container = useRef();
+  const variants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <section id="about" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-center">
           About <span className="text-primary">Me</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 ">
-            <h3 className="text-2xl font-semibold md:text-3xl">
-              Dedicated And Passionate Full Stack Developer
-            </h3>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
+          {/*grid 1 */}
+          <motion.div
+            className="flex items-end grid-default-color grid-1"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1 }}
+          >
+            <img
+              src="prince.jpg"
+              className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale[3] md:left-0 md:top-0 md:inset-y-10 lg:scale-[1]"
+            />
 
-            <p className="text-muted-foreground">
-              Developed scalable web applications and ensured seamless
-              integration of front-end and back-end systems
-            </p>
-            <p className="text-muted-foreground">
-              I'm passionate about crafting responsive user interfaces and
-              collaborating with cross-functional teams to meet project goals.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                Get In Touch
-              </a>
-
-              <a
-                href=""
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
-              >
-                Download CV
-              </a>
+            <div className="z-10 text-start">
+              <p className="headtext text-sky-200">Hi, I'm Chidi Princewill</p>
+              <p className="subtext">
+                In the last 2 years, I have developed my front-end and back-end
+                skills to a professional level, building responsive, scalable,
+                and secure web applications using modern frameworks
+              </p>
             </div>
+            <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
+          </motion.div>
+
+          {/*grid 2 */}
+          <div className="grid-default-color grid-2">
+            <motion.div
+              ref={grid2Container}
+              className="flex items-center justify-center w-full h-full"
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.2 }}
+            >
+              <p className="flex items-end text-4xl text-gray-500">
+                CODE IS CRAFT
+              </p>
+              <Card
+                style={{ rotate: "75deg", top: "30%", left: "20%" }}
+                text="CLARITY"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "-30deg", top: "60%", left: "45%" }}
+                text="STRUCTURE"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
+                text="BEAUTIFUL"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "-45deg", top: "55%", left: "0%" }}
+                text="ELEGANCE"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "20deg", top: "10%", left: "38%" }}
+                text="DESIGN PATTERNS"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "30deg", top: "70%", left: "70%" }}
+                image="logos/bootstrap.png"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "-45deg", top: "70%", left: "25%" }}
+                image="logos/laravel.png"
+                containerRef={grid2Container}
+              />
+              <Card
+                style={{ rotate: "30deg", top: "5%", left: "10%" }}
+                image="logos/react.png"
+                containerRef={grid2Container}
+              />
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
-                </div>
-
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web development</h4>
-                  <p className="text-muted-foreground">
-                    Creating responsive websites and applications with modern
-                    frameworks
-                  </p>
-                </div>
-              </div>
+          {/*grid 3 */}
+          <motion.div
+            className="grid-black-color grid-3"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.5 }}
+          >
+            <div className="z-10 w-[50%] text-start">
+              <p className="headtext text-sky-200">Time Zone</p>
+              <p className="subtext">
+                I'm based in Asaba, and i'm available for remote work
+              </p>
             </div>
+            <figure className="absolute left-[30%] top-[10%]">
+              <Globe />
+            </figure>
+          </motion.div>
 
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary" />
-                </div>
-
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">
-                    {" "}
-                    Wordpress development
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Building custom, responsive websites and themes with
-                    WordPress for easy content management.
-                  </p>
-                </div>
-              </div>
+          {/*grid 4 */}
+          <motion.div
+            className="grid-special-color grid-4"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.8 }}
+          >
+            <div className="flex flex-col items-center justify-center gap-4 size-full">
+              <p className="headtext text-sky-200 text-center">Get in Touch</p>
+              <CopyEmail />
             </div>
-          </div>
+          </motion.div>
+
+          {/*grid 5 */}
+          <motion.div
+            className="grid-default-color grid-5"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 2 }}
+          >
+            <div className="z-10 w-[50%] text-start">
+              <p className="headtext text-sky-200 ">Tech Stack</p>
+              <p className="subtext">
+                I specialise in a variety of languages, frameworks and tools
+                that allows me to build beautiful and responsive applications.
+              </p>
+            </div>
+            <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
+              <Framework />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

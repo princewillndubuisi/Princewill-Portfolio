@@ -11,7 +11,7 @@ export const HeroText = () => {
   return (
     <div className="z-10 text-center md:text-left rounded-3xl bg-clip-text">
       {/* Desktop */}
-      <div className="flex-col hidden md:flex c-space">
+      <div className="flex-col hidden md:flex">
         <motion.h1
           className=" md:text-4xl font-medium  text-muted-foreground "
           variants={variants}
@@ -82,7 +82,7 @@ export const HeroText = () => {
           <motion.div>
             <FlipWords
               words={words}
-              className="text-muted-foreground font-medium  text-7xl"
+              className="text-muted-foreground font-medium  text-6xl"
               variants={variants}
               initial="hidden"
               animate="visible"
