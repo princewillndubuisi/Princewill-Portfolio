@@ -41,7 +41,8 @@ export const ProjectDetails = ({
               ))}
             </div>
             <a className="inline-flex items-center gap-1 font-medium cursor-pointer hover-animation">
-              View Project <View className="size-4" href={href} />
+              View Project{" "}
+              <View className="size-4" href={href} target="_blank" />
             </a>
           </div>
         </div>

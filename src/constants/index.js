@@ -28,7 +28,7 @@ export const myProjects = [
         path: "/logos/tailwind.png",
       },
     ],
-    href: "#",
+    href: "https://tatdaily.com/",
     logo: "#",
   },
   {
