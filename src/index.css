@@ -232,7 +232,7 @@
 }
 
 .subtext {
-  @apply text-neutral-400 text-sm md:text-base text-pretty;
+  @apply text-neutral-400 text-sm md:text-base text-white;
 }
 
 .hover-animation {
