@@ -1,7 +1,7 @@
 import { Briefcase, Code, User } from "lucide-react";
 import { Card } from "./Card";
 import { useRef } from "react";
-import { Globe } from "./globe";
+import { Globe } from "./Globe";
 import { CopyEmail } from "./CopyEmail";
 import { motion } from "motion/react";
 import { Framework } from "./Framework";
