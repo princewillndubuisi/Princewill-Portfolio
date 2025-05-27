@@ -14,15 +14,39 @@ const navItems = [
 export const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScroll(window.scrollY > 10);
+      setScrollPosition(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu when clicking a link
+  const handleNavClick = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Prevent background scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = "100%";
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    }
+  }, [isMenuOpen, scrollPosition]);
 
   return (
     <nav
@@ -35,6 +59,7 @@ export const Navbar = () => {
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
+          onClick={handleNavClick}
         >
           <span className="relative z-10">
             <span className="text-glow text-foreground"> Princewill's </span>{" "}
@@ -42,47 +67,55 @@ export const Navbar = () => {
           </span>
         </a>
 
-        {/* Desktop nav*/}
+        {/* Desktop nav */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
               className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              onClick={handleNavClick}
             >
               {item.name}
             </a>
           ))}
         </div>
 
-        {/* Mobile nav*/}
+        {/* Mobile nav button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Men"}
+          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
+        {/* Mobile menu */}
         <motion.div
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+            "md:hidden"
           )}
+          initial={{ opacity: 0, y: -20 }}
+          animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          style={{ display: isMenuOpen ? "flex" : "none" }}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-8 text-xl text-center">
             {navItems.map((item, key) => (
-              <a
+              <motion.a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 py-2 px-4"
+                onClick={handleNavClick}
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.3, delay: 0.1 * key }}
               >
                 {item.name}
-              </a>
+              </motion.a>
             ))}
           </div>
         </motion.div>
