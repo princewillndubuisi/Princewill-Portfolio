@@ -1,7 +1,7 @@
 import { cn } from "@/tail/utils";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -14,39 +14,39 @@ const navItems = [
 export const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollPositionRef = useRef(0);
 
+  // Track scroll for navbar style
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScroll(window.scrollY > 10);
-      setScrollPosition(window.scrollY);
-    };
-
+    const handleScroll = () => setIsScroll(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking a link
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
-  };
-
-  // Prevent background scroll when menu is open
+  // Perfect scroll lock solution
   useEffect(() => {
     if (isMenuOpen) {
+      // Save current scroll position
+      scrollPositionRef.current = window.scrollY;
+
+      // Apply lock styles
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.top = `-${scrollPositionRef.current}px`;
       document.body.style.width = "100%";
     } else {
-      const scrollY = document.body.style.top;
+      // Remove lock styles
       document.body.style.overflow = "";
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.width = "";
-      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+
+      // Restore scroll position
+      window.scrollTo(0, scrollPositionRef.current);
     }
-  }, [isMenuOpen, scrollPosition]);
+  }, [isMenuOpen]);
+
+  const handleNavClick = () => setIsMenuOpen(false);
 
   return (
     <nav
@@ -56,22 +56,21 @@ export const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between">
+        {/* Logo */}
         <a
-          className="text-xl font-bold text-primary flex items-center"
           href="#hero"
           onClick={handleNavClick}
+          className="text-xl font-bold text-primary flex items-center"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> Princewill's </span>{" "}
-            Portfolio
-          </span>
+          <span className="text-glow text-foreground">Princewill's</span>{" "}
+          Portfolio
         </a>
 
-        {/* Desktop nav */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex space-x-8">
-          {navItems.map((item, key) => (
+          {navItems.map((item) => (
             <a
-              key={key}
+              key={item.href}
               href={item.href}
               className="text-foreground/80 hover:text-primary transition-colors duration-300"
               onClick={handleNavClick}
@@ -81,38 +80,43 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile nav button */}
+        {/* Mobile Toggle */}
         <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={cn(
+            "md:hidden p-2 fixed top-3 right-4 z-[999]",
+            isMenuOpen ? "text-white" : "text-foreground"
+          )}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? (
+            <X size={28} className="text-white " />
+          ) : (
+            <Menu size={28} />
+          )}
         </button>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         <motion.div
-          className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "md:hidden"
-          )}
-          initial={{ opacity: 0, y: -20 }}
-          animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          className="fixed inset-0 bg-background/95 backdrop-blur-md z-[998] flex flex-col items-center justify-center md:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isMenuOpen ? 1 : 0 }}
           transition={{ duration: 0.3 }}
-          style={{ display: isMenuOpen ? "flex" : "none" }}
+          style={{
+            pointerEvents: isMenuOpen ? "auto" : "none",
+            display: isMenuOpen ? "flex" : "none", // Double protection
+          }}
         >
-          <div className="flex flex-col space-y-8 text-xl text-center">
-            {navItems.map((item, key) => (
+          <div className="flex flex-col space-y-6 text-xl">
+            {navItems.map((item) => (
               <motion.a
-                key={key}
+                key={item.href}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 py-2 px-4"
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 py-3 px-6"
                 onClick={handleNavClick}
-                initial={{ opacity: 0, y: 10 }}
-                animate={
-                  isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
-                }
-                transition={{ duration: 0.3, delay: 0.1 * key }}
+                initial={{ y: 20 }}
+                animate={{ y: isMenuOpen ? 0 : 20 }}
+                transition={{ duration: 0.3 }}
               >
                 {item.name}
               </motion.a>
