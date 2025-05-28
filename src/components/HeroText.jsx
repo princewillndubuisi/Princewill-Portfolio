@@ -19,7 +19,7 @@ export const HeroText = () => {
           animate="visible"
           transition={{ delay: 1 }}
         >
-          Hi, I'm Princewill
+          Hi, I'm Princewill.
         </motion.h1>
 
         <div className="flex flex-col items-start ">
@@ -67,7 +67,7 @@ export const HeroText = () => {
           animate="visible"
           transition={{ delay: 1 }}
         >
-          Hi, I'm Princewill
+          Hi, I'm Princewill,
         </motion.p>
         <div>
           <motion.p
@@ -94,7 +94,7 @@ export const HeroText = () => {
             variants={variants}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 1.7 }}
+            transition={{ delay: 1.8 }}
           >
             Web Aplications
           </motion.p>

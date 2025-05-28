@@ -147,8 +147,8 @@ export const Aboutsection = () => {
             <div className="z-10 w-[50%] text-start">
               <p className="headtext text-sky-200">Tech Stack</p>
               <p className="subtext">
-                I specialise in a variety of languages, frameworks and tools
-                that allow me to build beautiful and responsive applications.
+                I specialise in a variety of languages, frameworks & tools that
+                allows me to build beautiful & responsive applications.
               </p>
             </div>
             <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
