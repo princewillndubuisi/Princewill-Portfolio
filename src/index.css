@@ -250,3 +250,17 @@
       rotate(calc((var(--angle) * -1deg) - 360deg));
   }
 }
+
+/* Scroll */
+.scroll-watcher {
+  scale: 0 1;
+  transform-origin: left;
+  animation: scroll-watcher linear;
+  animation-timeline: scroll();
+}
+
+@keyframes scroll-watcher {
+  to {
+    scale: 1 1;
+  }
+}

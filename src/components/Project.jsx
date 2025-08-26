@@ -21,7 +21,7 @@ export const Project = ({
       >
         <div>
           <p className="text-2xl flex">{title}</p>
-          <div className="flex gap-5 mt-2 text-sand">
+          <div className="flex gap-5 mt-2 text-primary">
             {tags.map((tag) => (
               <span key={tag.id}>{tag.name}</span>
             ))}

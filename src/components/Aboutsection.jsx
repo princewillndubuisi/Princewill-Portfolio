@@ -20,7 +20,7 @@ export const Aboutsection = () => {
           About <span className="text-primary">Me</span>
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12 article">
           {/* grid 1 */}
           <motion.div
             className="flex items-end grid-default-color grid-1"

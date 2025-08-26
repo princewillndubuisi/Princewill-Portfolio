@@ -63,4 +63,46 @@ export const myProjects = [
     href: "#",
     logo: "#",
   },
+  {
+    id: 3,
+    title: "AI-Powered SaaS Platform",
+    description:
+      "A fullstack SaaS application using the PERN stack, integrating AI-powered content and image generation.",
+    subdescription: [
+      "AI Article Generation using Gemini API produces high-quality blog posts.",
+      "AI Image Generation with Clipdrop API turns text prompts into visuals.",
+      "Postgres + Express + React + Node.js (PERN) power a scalable SaaS backend.",
+      "Authentication, role-based access, and SaaS workflows built-in.",
+    ],
+    image: "/projects/project3.png",
+    tags: [
+      {
+        id: 1,
+        name: "PostgreSQL",
+        path: "/logos/postgresql.png",
+      },
+      {
+        id: 2,
+        name: "Express.js",
+        path: "/logos/express.png",
+      },
+      {
+        id: 3,
+        name: "React.js",
+        path: "/logos/react.png",
+      },
+      {
+        id: 4,
+        name: "Node.js",
+        path: "/logos/node.png",
+      },
+      {
+        id: 5,
+        name: "AI APIs",
+        path: "/logos/ai.png",
+      },
+    ],
+    href: "https://prince-ai-six.vercel.app/",
+    logo: "#",
+  },
 ];

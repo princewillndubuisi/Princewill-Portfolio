@@ -15,6 +15,7 @@ const skills = [
   { name: "Livewire", level: 90, category: "backend" },
   { name: "MySQL", level: 90, category: "backend" },
   { name: "GraphQL", level: 60, category: "backend" },
+  { name: "Node", level: 60, category: "backend" },
 
   // Tools
   { name: "Git/Github", level: 80, category: "tools" },

@@ -42,7 +42,7 @@ export const HeroText = () => {
           >
             <FlipWords
               words={words}
-              className="font-black text-6xl text-muted-foreground "
+              className="font-black text-6xl text-primary"
             />
           </motion.div>
 
