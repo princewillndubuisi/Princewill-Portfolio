@@ -21,6 +21,7 @@ const skills = [
   { name: "Git/Github", level: 80, category: "tools" },
   { name: "Figma", level: 80, category: "tools" },
   { name: "VS Code", level: 85, category: "tools" },
+  { name: "Gsap/Framer Motion", level: 85, category: "tools" },
 ];
 
 const categories = ["all", "frontend", "backend", "tools"];
@@ -29,7 +30,7 @@ export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filterSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
+    (skill) => activeCategory === "all" || skill.category === activeCategory,
   );
 
   return (
@@ -47,7 +48,7 @@ export const SkillsSection = () => {
                 "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-foreground hover:bg-secondary"
+                  : "bg-secondary/70 text-foreground hover:bg-secondary",
               )}
               key={key}
             >
