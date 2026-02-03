@@ -31,38 +31,41 @@ export const myProjects = [
     href: "https://tatdaily.com/",
     logo: "#",
   },
+
   {
-    id: 2,
-    title: "E-commerce Platform",
-    description:
-      "A sleek footwear store landing page with dynamic interactions and responsive design.",
-    subdescription: [
-      "Built with Laravel and styled using Bootstrap.",
-      "jQuery powers modals, dropdowns, and hover effects.",
-      "Clean layout highlights products clearly.",
-      "Optimized for fast, seamless mobile shopping.",
-    ],
-    image: "/projects/project2.jpg",
-    tags: [
-      {
-        id: 1,
-        name: "Laravel",
-        path: "/logos/laravel.png",
-      },
-      {
-        id: 2,
-        name: "JQuery",
-        path: "/logos/jquery.png",
-      },
-      {
-        id: 3,
-        name: "BootstrapCss",
-        path: "/logos/bootstrap.png",
-      },
-    ],
-    href: "#",
-    logo: "#",
+  id: 2,
+  title: "Mojito Interactive UI",
+  description:
+    "A fully animated, interactive front-end project built with React, Tailwind, and GSAP, featuring multi-panel transitions and video animations.",
+  subdescription: [
+    "Panels slide in and out with smooth GSAP animations.",
+    "Background colors change instantly while text content animates.",
+    "Integrated video animations for engaging, dynamic content.",
+    "Next/Previous buttons control the carousel-like interface for an interactive experience.",
+  ],
+  image: "/projects/project4.png", // Replace with a screenshot of the project or video thumbnail
+  tags: [
+    {
+      id: 1,
+      name: "React.js",
+      path: "/logos/react.png",
+    },
+    {
+      id: 2,
+      name: "GSAP",
+      path: "/logos/gsap.png",
+    },
+    {
+      id: 3,
+      name: "TailwindCss",
+      path: "/logos/tailwind.png",
+    },
+
+  ],
+  href: "https://prince-cocktail.vercel.app/", // Replace with live demo or video link
+  logo: "#",
   },
+
   {
     id: 3,
     title: "AI-Powered SaaS Platform",
@@ -103,6 +106,39 @@ export const myProjects = [
       },
     ],
     href: "https://prince-ai-six.vercel.app/",
+    logo: "#",
+  },
+
+  {
+    id: 4,
+    title: "E-commerce Platform",
+    description:
+      "A sleek footwear store landing page with dynamic interactions and responsive design.",
+    subdescription: [
+      "Built with Laravel and styled using Bootstrap.",
+      "jQuery powers modals, dropdowns, and hover effects.",
+      "Clean layout highlights products clearly.",
+      "Optimized for fast, seamless mobile shopping.",
+    ],
+    image: "/projects/project2.jpg",
+    tags: [
+      {
+        id: 1,
+        name: "Laravel",
+        path: "/logos/laravel.png",
+      },
+      {
+        id: 2,
+        name: "JQuery",
+        path: "/logos/jquery.png",
+      },
+      {
+        id: 3,
+        name: "BootstrapCss",
+        path: "/logos/bootstrap.png",
+      },
+    ],
+    href: "#",
     logo: "#",
   },
 ];
