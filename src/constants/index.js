@@ -66,7 +66,7 @@ export const myProjects = [
         path: "/logos/tailwind.png",
       },
     ],
-    href: "https://your-apple-project-link.com",
+    href: "https://prince-apple.vercel.app/",
     logo: "#",
   },
 
